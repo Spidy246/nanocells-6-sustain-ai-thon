@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSphere - Peer Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #6200ea;
+            padding: 1rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff4081;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: #fff;
+            margin: 1rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #79fda5;
+            transform: scale(1.05);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #6200ea;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #3ef4fa;
+        }
+
+        .post {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-left: 4px solid #6200ea;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .post p {
+            margin: 0 0 5px;
+        }
+
+        .post small {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MindSphere - Peer Support</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#peer-support">Support Community</a></li>
+                <li><a href="#counseling">Contact Counselor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="peer-support">
+            <h2>Join the Peer Support Community</h2>
+            <p>We offer a safe and anonymous space for individuals to share their experiences and support each other.</p>
+            <form id="peer-support-form">
+                <label for="message">Your Message:</label>
+                <textarea id="message" rows="4" placeholder="Feel free to share your thoughts..." required></textarea>
+                <button type="submit">Submit Anonymously</button>
+            </form>
+            <div id="messages-container"></div>
+        </section>
+
+        <section id="counseling">
+            <h2>Anonymous Counseling Request</h2>
+            <p>If you need personal guidance, fill out the form below. Our counselors will respond anonymously.</p>
+            <form id="counseling-form">
+                <label for="concern">Describe Your Concern:</label>
+                <textarea id="concern" rows="4" placeholder="Feel free to describe your concern..." required></textarea>
+                <button type="submit">Request Counseling</button>
+            </form>
+            <div id="messages-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MindSphere. All Rights Reserved.</p>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const peerSupportForm = document.getElementById('peer-support-form');
+            const counselingForm = document.getElementById('counseling-form');
+            const messagesContainer = document.getElementById('messages-container');
+
+            peerSupportForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const message = document.getElementById('message').value.trim();
+                const timestamp = new Date().toLocaleString();
+
+                if (message) {
+                    const newMessage = document.createElement('div');
+                    newMessage.classList.add('post');
+                    newMessage.innerHTML = `<p>${message}</p><small>${timestamp}</small>`;
+                    messagesContainer.appendChild(newMessage);
+                    document.getElementById('message').value = '';
+                }
+            });
+
+            counselingForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const concern = document.getElementById('concern').value.trim();
+                const timestamp = new Date().toLocaleString();
+
+                if (concern) {
+                    const newMessage = document.createElement('div');
+                    newMessage.classList.add('post');
+                    newMessage.innerHTML = `<p>${concern}</p><small>${timestamp}</small>`;
+                    messagesContainer.appendChild(newMessage);
+                    document.getElementById('concern').value = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
