@@ -12,6 +12,9 @@ This platform aligns with global goals like **Good Health and Well-Being (SDG 3)
 
 Concept Diagram
 
+![Diagram2](https://github.com/user-attachments/assets/00f02f6e-ca7e-45bb-a9b6-6a873d52d5d3)
+
+
 
 
 
